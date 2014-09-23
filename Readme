@@ -1,0 +1,30 @@
+There are two programs in this directory. They illustrate the use of TCP and
+select() system call.
+
+The echoServer.c contains an ECHO server program that implements an ECHO
+service. After establishing connections with clients, an ECHO server receives
+byte strings from them and echos them back. The ECHO server can service
+multiple clients concurrently. It uses port number 5004 as the default port.
+Another port number pn may be specified as a command line parameter.
+If during binding process, it finds that port 5004 (or pn) is in use, it
+requests the system to allocate a port, and prints the new port number on
+standard output.
+
+USAGE: echoServer [port]
+
+The echoClient.c contains an ECHO client program. An ECHO client first
+establishes a connection with the ECHO server, and then repeatedly reads 
+character strings from standard input, sends them to the ECHO server, receives
+them from the ECHO server, and then prints them on the standard output.
+
+USAGE: echoClient [port [host]]
+
+Compile these programs as follows: 
+
+gcc -o echoServer echoServer.c 
+gcc -o echoClient echoClient.c
+
+ACKNOWLEDGEMENT: These programs are a modification of the ECHO server and
+ECHO client programs presented in the book `Internetworking with TCP/IP',
+Volume 3, Prentice Hall 2001, by D. E. Comer and D. L. Stevens.
+
